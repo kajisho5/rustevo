@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 1747" width="390" height="1747">
+<rect width="390" height="1747" fill="#F6F3EC"/>
+<rect x="0" y="0" width="390" height="52" rx="0" fill="#F6F3EC"/>
+<path d="M26 21 l-6 6 l6 6" fill="none" stroke="#2B4C9B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="34" y="32" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="15" font-weight="500" fill="#2B4C9B" text-anchor="start">台帳</text>
+<rect x="278" y="15" width="92" height="26" rx="13" fill="#ECE7DB"/>
+<rect x="324" y="17" width="44" height="22" rx="11" fill="#FFFDF8"/>
+<text x="301" y="32" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#5F5B52" text-anchor="middle">EN</text>
+<text x="346" y="32" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#1B1A17" text-anchor="middle">日本語</text>
+<line x1="0" y1="52" x2="390" y2="52" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<text x="20" y="86" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="700" fill="#5F5B52" text-anchor="start">世代 0004</text>
+<rect x="104" y="71" width="54.0" height="22" rx="11" fill="#FBE8E5"/>
+<text x="131.0" y="86" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#B3261E" text-anchor="middle">不合格</text>
+<text x="20" y="120.0" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="22" font-weight="700" fill="#1B1A17" text-anchor="start">開始ボタンの文言を日本語にする</text>
+<text x="20" y="146.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">Claude Fable 5.2  ·  2026-11-11  ·  親 0003</text>
+<rect x="20" y="172.8" width="350" height="118" rx="12" fill="#FBE8E5"/>
+<circle cx="44" cy="200.8" r="9" fill="#FFFDF8" stroke="#B3261E" stroke-width="2"/>
+<path d="M40.4 197.20000000000002 l7.2 7.2 M47.6 197.20000000000002 l-7.2 7.2" stroke="#B3261E" stroke-width="2" stroke-linecap="round"/>
+<text x="64" y="205.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="16" font-weight="700" fill="#B3261E" text-anchor="start">宣言していない所が変わった</text>
+<text x="36" y="232.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="13.5" font-weight="400" fill="#1B1A17" text-anchor="start">宣言は要素 start だけ。再演すると、状態</text>
+<text x="36" y="253.72500000000002" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="13.5" font-weight="400" fill="#1B1A17" text-anchor="start">remaining・派生値 label・要素 timer も変わっ</text>
+<text x="36" y="274.65000000000003" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="13.5" font-weight="400" fill="#1B1A17" text-anchor="start">ていました。</text>
+<text x="20" y="322.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" fill="#1B1A17" text-anchor="start">宣言と実測</text>
+<text x="370" y="322.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="end">親の記録 3 本を再演</text>
+<rect x="20" y="340.8" width="350" height="30" rx="8" fill="#ECE7DB"/>
+<text x="34" y="360.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="600" fill="#5F5B52" text-anchor="start">種類</text>
+<text x="94" y="360.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="600" fill="#5F5B52" text-anchor="start">名前</text>
+<text x="254" y="360.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="600" fill="#5F5B52" text-anchor="middle">宣言</text>
+<text x="326" y="360.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="600" fill="#5F5B52" text-anchor="middle">実測</text>
+<text x="34" y="397.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">要素</text>
+<text x="94" y="397.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14" font-weight="600" fill="#1B1A17" text-anchor="start">start</text>
+<circle cx="254" cy="392.8" r="5" fill="#1B1A17"/>
+<circle cx="326" cy="392.8" r="5" fill="#1F7A4D"/>
+<line x1="20" y1="414.8" x2="370" y2="414.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<rect x="20" y="414.8" width="350" height="44" rx="0" fill="#FBE8E5"/>
+<text x="34" y="441.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">状態</text>
+<text x="94" y="441.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14" font-weight="600" fill="#B3261E" text-anchor="start">remaining</text>
+<line x1="249" y1="436.8" x2="259" y2="436.8" stroke="#D9D3C5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="326" cy="436.8" r="5" fill="#B3261E"/>
+<text x="360" y="453.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="9.5" font-weight="700" fill="#B3261E" text-anchor="end">宣言外</text>
+<line x1="20" y1="458.8" x2="370" y2="458.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<rect x="20" y="458.8" width="350" height="44" rx="0" fill="#FBE8E5"/>
+<text x="34" y="485.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">派生値</text>
+<text x="94" y="485.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14" font-weight="600" fill="#B3261E" text-anchor="start">label</text>
+<line x1="249" y1="480.8" x2="259" y2="480.8" stroke="#D9D3C5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="326" cy="480.8" r="5" fill="#B3261E"/>
+<text x="360" y="497.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="9.5" font-weight="700" fill="#B3261E" text-anchor="end">宣言外</text>
+<line x1="20" y1="502.8" x2="370" y2="502.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<rect x="20" y="502.8" width="350" height="44" rx="0" fill="#FBE8E5"/>
+<text x="34" y="529.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">要素</text>
+<text x="94" y="529.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14" font-weight="600" fill="#B3261E" text-anchor="start">timer</text>
+<line x1="249" y1="524.8" x2="259" y2="524.8" stroke="#D9D3C5" stroke-width="2" stroke-linecap="round"/>
+<circle cx="326" cy="524.8" r="5" fill="#B3261E"/>
+<text x="360" y="541.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="9.5" font-weight="700" fill="#B3261E" text-anchor="end">宣言外</text>
+<line x1="20" y1="546.8" x2="370" y2="546.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<text x="20" y="586.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" fill="#1B1A17" text-anchor="start">画面</text>
+<text x="370" y="586.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="end">記録 basic  ·  ステップ 1</text>
+<rect x="20" y="604.8" width="169.0" height="196" rx="14" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="104.5" y="624.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="middle">親 0003</text>
+<line x1="20" y1="634.8" x2="189.0" y2="634.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<text x="104.5" y="670.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="20" font-weight="700" fill="#1B1A17" text-anchor="middle">残り 25:00</text>
+<rect x="34" y="688.8" width="141.0" height="30" rx="8" fill="#ECE7DB"/>
+<text x="104.5" y="708.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="600" fill="#1B1A17" text-anchor="middle">Stop</text>
+<text x="104.5" y="748.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="middle">done: 0</text>
+<rect x="201.0" y="604.8" width="169.0" height="196" rx="14" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="285.5" y="624.8" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="middle">この世代 0004</text>
+<line x1="201.0" y1="634.8" x2="370.0" y2="634.8" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<rect x="209.0" y="650.8" width="153.0" height="30" rx="6" fill="#FBE8E5"/>
+<text x="285.5" y="670.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="20" font-weight="700" fill="#B3261E" text-anchor="middle">残り 20:00</text>
+<rect x="215.0" y="688.8" width="141.0" height="30" rx="8" fill="#ECE7DB"/>
+<text x="285.5" y="708.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="600" fill="#1B1A17" text-anchor="middle">Stop</text>
+<text x="285.5" y="748.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="middle">done: 0</text>
+<text x="20" y="822.8" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">画面は論理的な木からの参考表示です。合否には使いません。</text>
+<text x="20" y="867.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" fill="#1B1A17" text-anchor="start">記録ごとの結果</text>
+<rect x="20" y="885.4" width="350" height="248" rx="12" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="36" y="916.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14.5" font-weight="700" fill="#1B1A17" text-anchor="start">basic</text>
+<rect x="120" y="901.4" width="42.0" height="22" rx="11" fill="#FBF0D9"/>
+<text x="141.0" y="916.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#8A5A00" text-anchor="middle">相違</text>
+<text x="336" y="916.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="400" fill="#5F5B52" text-anchor="end">ステップ 1 から相違</text>
+<path d="M346 908.4 l5 5 l5 -5" fill="none" stroke="#5F5B52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="20" y1="935.4" x2="370" y2="935.4" stroke="#D9D3C5" stroke-width="1" stroke-linecap="round"/>
+<text x="36" y="957.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="start">#</text>
+<text x="62" y="957.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="start">できごと</text>
+<text x="170" y="957.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="start">remaining（親）</text>
+<text x="354" y="957.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11" font-weight="600" fill="#5F5B52" text-anchor="end">この世代</text>
+<text x="36" y="993.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">0</text>
+<text x="62" y="993.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#1B1A17" text-anchor="start">開始</text>
+<text x="170" y="993.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">1500</text>
+<text x="354" y="993.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#1B1A17" text-anchor="end">1500</text>
+<rect x="21" y="1007.4" width="348" height="38" rx="0" fill="#FBE8E5"/>
+<text x="36" y="1031.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">1</text>
+<text x="62" y="1031.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#1B1A17" text-anchor="start">tap  start</text>
+<text x="170" y="1031.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">1500</text>
+<text x="354" y="1031.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="700" fill="#B3261E" text-anchor="end">1200</text>
+<rect x="21" y="1045.4" width="348" height="38" rx="0" fill="#FBE8E5"/>
+<text x="36" y="1069.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">2</text>
+<text x="62" y="1069.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#1B1A17" text-anchor="start">時計 +3000</text>
+<text x="170" y="1069.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">1497</text>
+<text x="354" y="1069.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="700" fill="#B3261E" text-anchor="end">1197</text>
+<rect x="21" y="1083.4" width="348" height="38" rx="0" fill="#FBE8E5"/>
+<text x="36" y="1107.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">3</text>
+<text x="62" y="1107.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#1B1A17" text-anchor="start">tap  stop</text>
+<text x="170" y="1107.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="400" fill="#5F5B52" text-anchor="start">1500</text>
+<text x="354" y="1107.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="13" font-weight="700" fill="#B3261E" text-anchor="end">1200</text>
+<text x="36" y="1129.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="1" font-weight="400" fill="#1B1A17" text-anchor="start"></text>
+<rect x="20" y="1143.4" width="350" height="50" rx="12" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="36" y="1174.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14.5" font-weight="700" fill="#1B1A17" text-anchor="start">complete</text>
+<rect x="120" y="1159.4" width="42.0" height="22" rx="11" fill="#FBF0D9"/>
+<text x="141.0" y="1174.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#8A5A00" text-anchor="middle">相違</text>
+<text x="336" y="1174.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="400" fill="#5F5B52" text-anchor="end">ステップ 1 から相違</text>
+<path d="M348 1164.4 l5 5 l-5 5" fill="none" stroke="#5F5B52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="20" y="1203.4" width="350" height="50" rx="12" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="36" y="1234.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14.5" font-weight="700" fill="#1B1A17" text-anchor="start">restart</text>
+<rect x="120" y="1219.4" width="42.0" height="22" rx="11" fill="#FBF0D9"/>
+<text x="141.0" y="1234.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#8A5A00" text-anchor="middle">相違</text>
+<text x="336" y="1234.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="400" fill="#5F5B52" text-anchor="end">ステップ 1 から相違</text>
+<path d="M348 1224.4 l5 5 l-5 5" fill="none" stroke="#5F5B52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="20" y="1293.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" fill="#1B1A17" text-anchor="start">plan の差分</text>
+<rect x="20" y="1311.4" width="350" height="98" rx="12" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<rect x="36" y="1328.4" width="42.0" height="22" rx="11" fill="#ECE7DB"/>
+<text x="57.0" y="1343.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#5F5B52" text-anchor="middle">変更</text>
+<text x="86" y="1343.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="14" font-weight="600" fill="#1B1A17" text-anchor="start">#start</text>
+<text x="354" y="1343.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="11.5" font-weight="400" fill="#5F5B52" text-anchor="end">要素 1 件</text>
+<text x="36" y="1371.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">構造の差はボタン1つだけ。ロジックの中の違いは plan</text>
+<text x="36" y="1390.775" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12.5" font-weight="400" fill="#5F5B52" text-anchor="start">に出ないため、再演で見つかりました。</text>
+<text x="20" y="1449.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" fill="#1B1A17" text-anchor="start">ハッシュ</text>
+<rect x="20" y="1467.4" width="350" height="150" rx="12" fill="#FFFDF8" stroke="#D9D3C5" stroke-width="1"/>
+<text x="36" y="1497.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">世代</text>
+<text x="354" y="1497.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11.5" font-weight="400" fill="#1B1A17" text-anchor="end">92eca291ee9d798a2ab5aa887181…</text>
+<line x1="36" y1="1509.4" x2="354" y2="1509.4" stroke="#ECE7DB" stroke-width="1" stroke-linecap="round"/>
+<text x="36" y="1529.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">親</text>
+<text x="354" y="1529.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11.5" font-weight="400" fill="#1B1A17" text-anchor="end">a9bb08d356df9d0a50c81fdf997a…</text>
+<line x1="36" y1="1541.4" x2="354" y2="1541.4" stroke="#ECE7DB" stroke-width="1" stroke-linecap="round"/>
+<text x="36" y="1561.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">plan</text>
+<text x="354" y="1561.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11.5" font-weight="400" fill="#1B1A17" text-anchor="end">ed177581217408563c380f6795aa…</text>
+<line x1="36" y1="1573.4" x2="354" y2="1573.4" stroke="#ECE7DB" stroke-width="1" stroke-linecap="round"/>
+<text x="36" y="1593.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="400" fill="#5F5B52" text-anchor="start">ロジック</text>
+<text x="354" y="1593.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="11.5" font-weight="400" fill="#1B1A17" text-anchor="end">294dfe575e660e8bec3d0c37180a…</text>
+<rect x="20" y="1639.4" width="350" height="44" rx="10" fill="#1B1A17"/>
+<text x="36" y="1666.4" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans Mono CJK JP', monospace" font-size="12.5" font-weight="400" fill="#F6F3EC" text-anchor="start">$ evo verify apps/pomodoro</text>
+<text x="354" y="1666.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="12" font-weight="600" fill="#CFC9BB" text-anchor="end">コピー</text>
+<text x="20" y="1707.4" font-family="system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif" font-size="13" font-weight="600" fill="#2B4C9B" text-anchor="start">ソースと証跡のファイルを見る</text>
+<path d="M210 1697.4 l5 5 l-5 5" fill="none" stroke="#2B4C9B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
