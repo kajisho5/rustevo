@@ -122,7 +122,13 @@ fn cargo_wasm(manifest: &Path, target: &Path) -> R<Vec<u8>> {
         // cargo runs evo as rustc, so it sees the same host on every machine
         .env("RUSTC", &shim)
         .env(RUSTC_SHIM, real_rustc(manifest.parent().unwrap())?)
+        // (an empty value would also switch off a wrapper set in cargo's
+        // config file, but cargo then names things differently and the
+        // bytes change, so a wrapper set there is not handled)
         .env_remove("RUSTC_WRAPPER")
+        .env_remove("RUSTC_WORKSPACE_WRAPPER")
+        .env_remove("CARGO_BUILD_RUSTC_WRAPPER")
+        .env_remove("CARGO_BUILD_RUSTC_WORKSPACE_WRAPPER")
         .output()
         .map_err(|e| format!("cargo を実行できない: {e}"))?;
     if !out.status.success() {

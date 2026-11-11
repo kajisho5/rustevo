@@ -21,7 +21,7 @@ jobs:
           path: |
             ~/.cargo/registry
             target
-          key: ubuntu-24.04-${{ hashFiles('Cargo.lock', 'rust-toolchain.toml') }}
+          key: pages-ubuntu-24.04-${{ hashFiles('Cargo.lock', 'rust-toolchain.toml') }}
       - run: cargo build --quiet --release -p evo-cli
       - run: ./target/release/evo site apps/pomodoro --out _site --repo "https://github.com/${{ github.repository }}" --commit "${{ github.sha }}"
       - uses: actions/upload-pages-artifact@v5

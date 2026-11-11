@@ -467,11 +467,19 @@ fn generation(l: L, g: &Gen, carried: &[gen::CarriedRun], fresh: &[gen::FreshRun
     let mut opened = false;
     for c in carried {
         let result = s(&c.report, "result");
+        // a journal that could not be carried is a plain retirement only
+        // when the declaration covers the reason
+        let sub = s(&c.report, "subject");
+        let unexplained = v["other"].as_array().into_iter().flatten().any(|x| s(x, "journal") == c.name)
+            || sub.strip_prefix("node:").is_some_and(|n| undeclared.contains(&("nodes".to_string(), n.to_string())))
+            || sub.strip_prefix("effect:").is_some_and(|n| undeclared.contains(&("effects".to_string(), n.to_string())));
         let (cls, label) = match result {
             "same" => ("ok", l.t("same", "一致")),
             "diff" => ("warn", l.t("differs", "相違")),
+            _ if unexplained => ("ng", l.t("could not be carried", "流せなかった")),
             _ => ("plain", l.t("retired", "引退")),
         };
+        let stop_at = c.report["at"].as_u64().map(|a| a as usize);
         let firsts: Vec<u64> = ["fields", "derives", "nodes"].iter().flat_map(|k| c.report[*k].as_object().into_iter().flatten().filter_map(|(_, v)| v.as_u64())).collect();
         let st = match (result, firsts.iter().min()) {
             ("diff", Some(m)) => {
@@ -518,14 +526,12 @@ fn generation(l: L, g: &Gen, carried: &[gen::CarriedRun], fresh: &[gen::FreshRun
                         for name in differing(a, bb) {
                             bad = true;
                             let f = if node { show_node } else { show };
-                            let _ = write!(
-                                subs,
-                                r#"<li><span class="k">{}</span>{} <span class="old">{}</span> → <span class="new">{}</span></li>"#,
-                                l.kind(k),
-                                e(&name),
-                                e(&f(a.get(&name))),
-                                e(&f(bb.get(&name)))
-                            );
+                            let (mut x, mut y) = (f(a.get(&name)), f(bb.get(&name)));
+                            if x == y {
+                                // the short form hides what differs (a style, the parent): show it all
+                                (x, y) = (show(a.get(&name)), show(bb.get(&name)));
+                            }
+                            let _ = write!(subs, r#"<li><span class="k">{}</span>{} <span class="old">{}</span> → <span class="new">{}</span></li>"#, l.kind(k), e(&name), e(&x), e(&y));
                         }
                     }
                     for x in &new.inv {
@@ -533,11 +539,11 @@ fn generation(l: L, g: &Gen, carried: &[gen::CarriedRun], fresh: &[gen::FreshRun
                         let _ = write!(subs, r#"<li class="inv">{} {}</li>"#, l.t("invariant broken:", "不変条件が破れた:"), e(x));
                     }
                 }
-                None if i == c.new.len() => {
-                    bad = true;
-                    let _ = write!(subs, r#"<li class="inv">{}</li>"#, e(&l.stored(s(&c.report, "reason"))));
-                }
                 None => {}
+            }
+            if stop_at == Some(i) {
+                bad = true;
+                let _ = write!(subs, r#"<li class="inv">{}</li>"#, e(&l.stored(s(&c.report, "reason"))));
             }
             let subs = if subs.is_empty() { subs } else { format!("<ul>{subs}</ul>") };
             let _ = writeln!(b, r#"<li class="{}"><span class="i">{i}</span><span>{}</span>{subs}</li>"#, if bad { "bad" } else { "" }, e(&ev));

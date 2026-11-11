@@ -82,7 +82,7 @@ rm -rf "$T/g/apps/pomodoro/build" "$T/g/crates/target"
 sed -i 's/^opt-level = "s"/opt-level = "z"/' "$T/g/Cargo.toml"
 grep -q '^opt-level = "z"' "$T/g/Cargo.toml" || fail "the test could not change the build settings"
 "$E" verify "$T/g/apps/pomodoro" --rebuild >/dev/null 2>"$T/g.err" && fail "a rebuild with other settings passed"
-grep -q "0001" "$T/g.err" || fail "the mismatching generation was not named"
+grep -q "0001.*logic.wasm と違う" "$T/g.err" || fail "the mismatching generation was not named"
 echo "caught: $(grep -m1 '^NG' "$T/g.err")"
 
 say "the ledger pages are written, in English and Japanese"
@@ -97,6 +97,6 @@ grep -q 'lang="ja"' "$T/site/ja/index.html" || fail "the Japanese page is not ma
 say "no pages are written for a ledger that does not verify"
 "$E" site "$T/b" --out "$T/site-b" >/dev/null 2>"$T/sb.err" && fail "pages were written for a bad ledger"
 [ ! -e "$T/site-b" ] || fail "files were written for a bad ledger"
-echo "refused: $(head -1 "$T/sb.err" | cut -c1-60)"
+echo "refused: $(head -1 "$T/sb.err" | cut -c1-120)"
 
 say "all checks passed"
