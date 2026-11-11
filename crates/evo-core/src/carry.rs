@@ -11,6 +11,10 @@ pub struct Carried {
     pub report: Value,
     /// The journal as the new build writes it; none when it could not be carried.
     pub lines: Option<Vec<String>>,
+    /// The app after every step, on the parent build and on the new one
+    /// (the new list is shorter when the journal could not be carried).
+    pub old_snaps: Vec<Snap>,
+    pub new_snaps: Vec<Snap>,
 }
 
 fn req_key(r: &Value) -> String {
@@ -95,7 +99,7 @@ pub fn carry(name: &str, old_plan: &Plan, old_logic: &mut dyn Logic, old_lines: 
         report["subject"] = json!(subject);
         report["reason"] = json!(reason);
     }
-    Ok(Carried { report, lines: if stop.is_none() { Some(new.lines) } else { None } })
+    Ok(Carried { report, old_snaps: old.snaps, new_snaps: new.snaps, lines: if stop.is_none() { Some(new.lines) } else { None } })
 }
 
 fn matches(pats: &[String], s: &str) -> Option<usize> {

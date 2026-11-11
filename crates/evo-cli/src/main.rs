@@ -35,6 +35,8 @@ const HELP: &str = "evo — rustevo の道具
       保存された logic.wasm と 1 バイトも違わないかも確かめる（時間がかかる）
     evo ledger <app>                 台帳を表示
     evo replay <app> <file.jsonl>    今のビルドで記録を厳密に再演する
+    evo site <app> --out <dir> [--repo URL] [--commit ID]
+                                     公開台帳のページを書き出す（先に検証し、失敗したら何も書かない）
 ";
 
 fn session_path(app: &Path, name: &str) -> PathBuf {
@@ -80,7 +82,7 @@ fn run(args: &[String]) -> R<()> {
                     skip = false;
                     return false;
                 }
-                if *a == "--by" {
+                if matches!(a.as_str(), "--by" | "--out" | "--repo" | "--commit") {
                     skip = true;
                 }
                 !a.starts_with("--")
@@ -145,6 +147,13 @@ fn run(args: &[String]) -> R<()> {
                 }
                 println!("OK {} 世代すべて、ソースから作り直したロジックが保存分と一致した", report.len());
             }
+        }
+        "site" => {
+            let flag = |name: &str| args.iter().position(|a| a == name).and_then(|i| args.get(i + 1)).cloned();
+            let out = PathBuf::from(flag("--out").ok_or("--out <書き出し先のフォルダ> を指定する")?);
+            let o = evo_core::site::Opts { app_path: app.to_string_lossy().trim_end_matches('/').to_string(), repo: flag("--repo").map(|r| r.trim_end_matches('/').to_string()), commit: flag("--commit") };
+            let n = evo_core::site::site(&app, &out, &o)?;
+            println!("OK {n} ファイルを {} に書いた", out.display());
         }
         "ledger" => {
             for l in gen::ledger(&app)? {

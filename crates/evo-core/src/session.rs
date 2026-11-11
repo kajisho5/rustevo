@@ -12,6 +12,7 @@ pub struct Snap {
     pub state: Vals,
     pub derives: Vals,
     pub nodes: Vals,
+    pub tree: Value,
     pub inv: Vec<String>,
 }
 
@@ -47,7 +48,7 @@ impl<'a> Session<'a> {
             "prev": self.lines.last().map(|l| sha(l.as_bytes())).unwrap_or_default(),
         });
         self.lines.push(canon(&line));
-        self.snaps.push(Snap { state: self.rt.state.clone(), derives: d, nodes: b.flat, inv });
+        self.snaps.push(Snap { state: self.rt.state.clone(), derives: d, nodes: b.flat, tree: b.tree, inv });
         Ok(())
     }
 

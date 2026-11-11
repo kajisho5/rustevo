@@ -112,6 +112,7 @@ evo carry  apps/pomodoro                # dry run of the verdict
 evo seal   apps/pomodoro --by "agent"   # judge, write the generation
 evo verify apps/pomodoro                # check the whole ledger
 evo verify apps/pomodoro --rebuild      # rebuild each generation's logic from its source and compare
+evo site   apps/pomodoro --out _site    # write the public ledger pages (verifies first)
 ```
 
 Driver operations: `tree` `state` `journal` (read) and `tap` `type` `clock` `respond` (write, always recorded).

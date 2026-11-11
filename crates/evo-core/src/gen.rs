@@ -487,3 +487,48 @@ pub fn rebuild(app: &Path) -> R<(Vec<String>, Vec<String>)> {
     let _ = std::fs::remove_dir_all(&root);
     Ok((report, bad))
 }
+
+/// One parent journal replayed on a generation, step by step.
+pub struct CarriedRun {
+    pub name: String,
+    /// the parent's journal lines (the events come from here)
+    pub lines: Vec<String>,
+    pub old: Vec<Snap>,
+    pub new: Vec<Snap>,
+    pub report: Value,
+}
+
+/// One journal recorded on the generation itself.
+pub struct FreshRun {
+    pub name: String,
+    pub lines: Vec<String>,
+    pub snaps: Vec<Snap>,
+}
+
+/// Replay again what `judge` replayed for generation `n`, keeping the app's
+/// values after every step. The ledger page shows the differences from this.
+pub fn details(app: &Path, n: u64) -> R<(Vec<CarriedRun>, Vec<FreshRun>)> {
+    let dir = gen_dir(app, n);
+    let gen = json_file(&dir.join("gen.json"))?;
+    let plan = Plan::from_text(&read(&dir.join("plan.json"))?)?;
+    let mut logic = WasmLogic::new(&io(std::fs::read(dir.join("logic.wasm")), &dir)?)?;
+    let mut carried = vec![];
+    if let Some(pn) = gen["parent_n"].as_u64() {
+        let pd = gen_dir(app, pn);
+        let pplan = Plan::from_text(&read(&pd.join("plan.json"))?)?;
+        let mut plogic = WasmLogic::new(&io(std::fs::read(pd.join("logic.wasm")), &pd)?)?;
+        for (name, lines) in journals(&pd.join("journals"))? {
+            let c = carry(&name, &pplan, &mut plogic, &lines, &plan, &mut logic)?;
+            carried.push(CarriedRun { name, lines, old: c.old_snaps, new: c.new_snaps, report: c.report });
+        }
+    }
+    let names: Vec<String> = gen["fresh"].as_array().into_iter().flatten().filter_map(|x| x.as_str().map(String::from)).collect();
+    let mut fresh = vec![];
+    for (name, lines) in journals(&dir.join("journals"))? {
+        if names.contains(&name) {
+            let snaps = Session::replay(&plan, &mut logic, &lines)?.snaps;
+            fresh.push(FreshRun { name, lines, snaps });
+        }
+    }
+    Ok((carried, fresh))
+}

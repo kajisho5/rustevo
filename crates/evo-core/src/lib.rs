@@ -5,6 +5,7 @@ pub mod lang;
 pub mod plan;
 pub mod runtime;
 pub mod session;
+pub mod site;
 pub mod wasm;
 
 #[cfg(test)]

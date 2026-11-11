@@ -71,6 +71,7 @@ evo carry  apps/pomodoro                # 判定の下見
 evo seal   apps/pomodoro --by "agent"   # 判定して世代を書く
 evo verify apps/pomodoro                # 台帳を最初から検証
 evo verify apps/pomodoro --rebuild      # 各世代のソースからロジックを作り直し、保存分と比べる
+evo site   apps/pomodoro --out _site    # 公開台帳のページを書き出す（先に検証する）
 ```
 
 ドライバの操作: 見る `tree` `state` `journal`、入れる `tap` `type` `clock` `respond`（入れる操作は必ず記録に残る）。

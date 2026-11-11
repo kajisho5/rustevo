@@ -85,4 +85,18 @@ grep -q '^opt-level = "z"' "$T/g/Cargo.toml" || fail "the test could not change 
 grep -q "0001" "$T/g.err" || fail "the mismatching generation was not named"
 echo "caught: $(grep -m1 '^NG' "$T/g.err")"
 
+say "the ledger pages are written, in English and Japanese"
+"$E" site apps/pomodoro --out "$T/site" --repo https://example.invalid/repo
+N=$(wc -l < apps/pomodoro/ledger.jsonl)
+for f in index.html ja/index.html "g/$(printf %04d "$N").html" "ja/g/$(printf %04d "$N").html"; do
+  [ -s "$T/site/$f" ] || fail "missing page $f"
+done
+[ "$(find "$T/site" -name '*.html' | wc -l)" = "$((2 * N + 2))" ] || fail "wrong number of pages"
+grep -q 'lang="ja"' "$T/site/ja/index.html" || fail "the Japanese page is not marked as Japanese"
+
+say "no pages are written for a ledger that does not verify"
+"$E" site "$T/b" --out "$T/site-b" >/dev/null 2>"$T/sb.err" && fail "pages were written for a bad ledger"
+[ ! -e "$T/site-b" ] || fail "files were written for a bad ledger"
+echo "refused: $(head -1 "$T/sb.err" | cut -c1-60)"
+
 say "all checks passed"
