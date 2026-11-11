@@ -1,0 +1,9 @@
+{
+  "derives": [
+    "label"
+  ],
+  "intent": "残り時間の表示に「残り」をつける",
+  "nodes": [
+    "timer"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362355,
+  "by": "Claude Fable 5.2",
+  "fresh": [],
+  "hash": "92eca291ee9d798a2ab5aa887181313838a5ee8e47691e9efb8acfc07285b6f8",
+  "intent": "開始ボタンの文言を日本語にする",
+  "logic": "294dfe575e660e8bec3d0c37180afe92d1c4c1d448c4622e340c9a7765744ee3",
+  "n": 4,
+  "parent": "a9bb08d356df9d0a50c81fdf997a641fb1b1b2419e87c0bcb64a28681b1f9386",
+  "parent_n": 3,
+  "plan": "ed177581217408563c380f6795aa35793fb9766e6ca20240809a1e7213d82b8b",
+  "runtime": "0.1.0",
+  "status": "rejected"
+}

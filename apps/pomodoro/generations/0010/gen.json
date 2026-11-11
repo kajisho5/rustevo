@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362426,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "skip_rest"
+  ],
+  "hash": "e8a3c335ff9e27821b74eef22b3f9616c6804d47d3bc0dec73448888917b91a3",
+  "intent": "休憩の間だけ、休憩をとばして待機に戻るボタンを出す（世代9のやり直し。残り時間を引き算しない）",
+  "logic": "a58dbf5bbc0bbb3cd856e0c3347bc4f584dd1a25ee5691feb337af34c6cff1cf",
+  "n": 10,
+  "parent": "16cd524e31f9e72feb78d9460b8539407f82e2830dd0a459bdad24e24bea2ecc",
+  "parent_n": 8,
+  "plan": "2e3f4344258ac3ba7f5349f90ffa94f370557b52102b92ffbf645a3640ba8d8e",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

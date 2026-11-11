@@ -1,0 +1,8 @@
+// A fixture, not a real app: its one action tries to read the wall clock.
+app BadClock: Main
+
+state stamp: int = 0
+
+view Main {
+  button #now { "now"; on tap do read_clock }
+}

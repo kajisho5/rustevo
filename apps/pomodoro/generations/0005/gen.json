@@ -1,0 +1,15 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362395,
+  "by": "Claude Fable 5.2",
+  "fresh": [],
+  "hash": "73cb6ff4a3600237dbdf0ebaecfc7a4686a38aa3e2aec8e9cadbae1058663301",
+  "intent": "開始ボタンの文言を日本語にする（世代4のやり直し。集中時間は25分のまま）",
+  "logic": "82e976065636b7b3a3ffcd7cb4e5825e144e058b981c4dc0213d9e7f7ee2baf1",
+  "n": 5,
+  "parent": "a9bb08d356df9d0a50c81fdf997a641fb1b1b2419e87c0bcb64a28681b1f9386",
+  "parent_n": 3,
+  "plan": "ed177581217408563c380f6795aa35793fb9766e6ca20240809a1e7213d82b8b",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

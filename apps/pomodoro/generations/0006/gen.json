@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362397,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "rest"
+  ],
+  "hash": "7cccbd82102cfa75d52ea7d664ebfa9eab99ac98bb382d8feace2ce0ad28eb61",
+  "intent": "集中が終わったら5分の休憩に入る。今どの状態かを画面に出す",
+  "logic": "806a10450b475d08af600c13a8041790e92dc4002a6fa6b8c3ad982bd7df6012",
+  "n": 6,
+  "parent": "73cb6ff4a3600237dbdf0ebaecfc7a4686a38aa3e2aec8e9cadbae1058663301",
+  "parent_n": 5,
+  "plan": "a33e8ae55f20e1d799a51b8b11d1dfdbbb943e30b008f3dc46be20aebe8c6d87",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

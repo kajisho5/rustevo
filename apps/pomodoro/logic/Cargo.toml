@@ -1,0 +1,13 @@
+[package]
+name = "pomodoro-logic"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+evo-logic = { path = "../../../crates/evo-logic" }
+serde.workspace = true
+serde_json.workspace = true

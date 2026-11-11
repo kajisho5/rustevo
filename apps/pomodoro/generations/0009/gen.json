@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362424,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "skip"
+  ],
+  "hash": "4d6a8c6e09b2a2917a97d81c13f74842a15084917e94a1a562ac5aed081f0768",
+  "intent": "動いている間、残り時間を5分とばすボタンを足す",
+  "logic": "0952dc7aa3a648f9bc3e2ceb6e6f6c53fa01f296c1af28902a9705a9606cd3ff",
+  "n": 9,
+  "parent": "16cd524e31f9e72feb78d9460b8539407f82e2830dd0a459bdad24e24bea2ecc",
+  "parent_n": 8,
+  "plan": "f47369a1c8ebb0cac599abf32d840ef38faa82d1d06b4a5b1e657ba38e1c0ba1",
+  "runtime": "0.1.0",
+  "status": "rejected"
+}

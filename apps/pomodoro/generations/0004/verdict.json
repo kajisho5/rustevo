@@ -1,0 +1,27 @@
+{
+  "declared_unchanged": {},
+  "diff": [
+    "basic",
+    "complete",
+    "restart"
+  ],
+  "inv": [],
+  "other": [],
+  "retired": [],
+  "same": [],
+  "status": "rejected",
+  "undeclared": {
+    "derives": [
+      "label"
+    ],
+    "fields": [
+      "remaining"
+    ],
+    "nodes": [
+      "timer"
+    ]
+  },
+  "why": [
+    "宣言していない所が変わった"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362432,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "history"
+  ],
+  "hash": "d3e0d9387fdd0cad586f94e0be6388cefe8229f2c2ac4cfd918763775258ed12",
+  "intent": "集中が1回終わるたびに、番号と名前を一覧に残す",
+  "logic": "f4caceae0e0e534ad571dd4615b580cc4aa7a58685c95ec79a86e5d39189cebc",
+  "n": 12,
+  "parent": "6dcfdc508dd0dc1ef922630ed7a06e47782a15f93127cc71345071111a3a00e0",
+  "parent_n": 11,
+  "plan": "efc8c310c1f19649d75154c51a607a8ca91249e3ba4766e6dadd68d516575c49",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

@@ -1,0 +1,6 @@
+{
+  "effects": [
+    "store.put:done"
+  ],
+  "intent": "集中が1回終わるたびに、完了回数を保存する"
+}

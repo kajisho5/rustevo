@@ -1,0 +1,47 @@
+{
+  "actions": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "derives": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "invariants": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "nodes": {
+    "added": [
+      "#doing",
+      "#root~if4",
+      "#root~if4~if1",
+      "#task"
+    ],
+    "changed": [],
+    "removed": [
+      "#root~if2",
+      "#root~if2~if1"
+    ]
+  },
+  "state": {
+    "added": [
+      "task"
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "styles": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "timers": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  }
+}

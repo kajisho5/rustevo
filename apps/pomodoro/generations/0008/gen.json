@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362400,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "reset"
+  ],
+  "hash": "16cd524e31f9e72feb78d9460b8539407f82e2830dd0a459bdad24e24bea2ecc",
+  "intent": "完了回数を0に戻すボタンを足す",
+  "logic": "21b10d144f3851711bd320681f639fbb32d9f22dac8a34ae924186336242fe69",
+  "n": 8,
+  "parent": "c475a67050fd2957368d02596dc7736f8e2e56f622ffaacc07150a455ce0199e",
+  "parent_n": 7,
+  "plan": "39cacea224ae254ac7dd54c731815c11e00e1c1aeb260e4e8c47c1e4826006bb",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

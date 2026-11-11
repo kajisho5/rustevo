@@ -1,0 +1,43 @@
+{
+  "actions": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "derives": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "invariants": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "nodes": {
+    "added": [
+      "#entry",
+      "#history",
+      "#history~for0"
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "state": {
+    "added": [
+      "log"
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "styles": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "timers": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  }
+}

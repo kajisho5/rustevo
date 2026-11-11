@@ -1,0 +1,18 @@
+{
+  "derives": [
+    "label",
+    "running",
+    "mode"
+  ],
+  "fields": [
+    "phase",
+    "remaining"
+  ],
+  "intent": "集中が終わったら5分の休憩に入る。今どの状態かを画面に出す",
+  "nodes": [
+    "mode",
+    "timer",
+    "start",
+    "stop"
+  ]
+}

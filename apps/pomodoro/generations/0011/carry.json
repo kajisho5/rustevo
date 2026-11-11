@@ -1,0 +1,72 @@
+[
+  {
+    "derives": {},
+    "fields": {
+      "task": 0
+    },
+    "inv": [],
+    "journal": "basic",
+    "nodes": {
+      "doing": 0,
+      "task": 0
+    },
+    "result": "diff",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {
+      "task": 0
+    },
+    "inv": [],
+    "journal": "reset",
+    "nodes": {
+      "doing": 0,
+      "task": 0
+    },
+    "result": "diff",
+    "steps": 5
+  },
+  {
+    "derives": {},
+    "fields": {
+      "task": 0
+    },
+    "inv": [],
+    "journal": "restart",
+    "nodes": {
+      "doing": 0,
+      "task": 0
+    },
+    "result": "diff",
+    "steps": 6
+  },
+  {
+    "derives": {},
+    "fields": {
+      "task": 0
+    },
+    "inv": [],
+    "journal": "saved",
+    "nodes": {
+      "doing": 0,
+      "task": 0
+    },
+    "result": "diff",
+    "steps": 8
+  },
+  {
+    "derives": {},
+    "fields": {
+      "task": 0
+    },
+    "inv": [],
+    "journal": "skip_rest",
+    "nodes": {
+      "doing": 0,
+      "task": 0
+    },
+    "result": "diff",
+    "steps": 7
+  }
+]

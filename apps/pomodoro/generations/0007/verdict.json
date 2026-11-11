@@ -1,0 +1,27 @@
+{
+  "declared_unchanged": {},
+  "diff": [],
+  "inv": [],
+  "other": [],
+  "retired": [
+    {
+      "at": 3,
+      "journal": "complete",
+      "reason": "新しいビルドが出す依頼の結果が記録にない",
+      "subject": "effect:store.put:done"
+    },
+    {
+      "at": 4,
+      "journal": "rest",
+      "reason": "新しいビルドが出す依頼の結果が記録にない",
+      "subject": "effect:store.put:done"
+    }
+  ],
+  "same": [
+    "basic",
+    "restart"
+  ],
+  "status": "sealed",
+  "undeclared": {},
+  "why": []
+}

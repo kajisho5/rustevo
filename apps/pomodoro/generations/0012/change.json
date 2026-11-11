@@ -1,0 +1,10 @@
+{
+  "fields": [
+    "log"
+  ],
+  "intent": "集中が1回終わるたびに、番号と名前を一覧に残す",
+  "nodes": [
+    "history",
+    "entry*"
+  ]
+}

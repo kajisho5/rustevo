@@ -1,0 +1,18 @@
+{
+  "declared_unchanged": {},
+  "diff": [
+    "basic",
+    "named",
+    "reset",
+    "restart",
+    "saved",
+    "skip_rest"
+  ],
+  "inv": [],
+  "other": [],
+  "retired": [],
+  "same": [],
+  "status": "sealed",
+  "undeclared": {},
+  "why": []
+}

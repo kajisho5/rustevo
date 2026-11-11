@@ -1,0 +1,29 @@
+app Pomodoro: Main
+
+state phase: idle | focus | rest = idle
+state remaining: int = 1500
+state done: int = 0
+
+derive label = "残り " + mmss(remaining)
+derive running = phase != idle
+derive mode = if phase == rest then "休憩" else if phase == focus then "集中" else "待機"
+
+invariant remaining >= 0
+invariant done >= 0
+
+every 1s when running do tick
+
+style big { size: 48 }
+
+view Main {
+  column #root {
+    text #mode { mode }
+    text #timer style big { label }
+    if running {
+      button #stop { "Stop"; on tap do stop }
+    } else {
+      button #start { "集中をはじめる"; on tap do start }
+    }
+    text #count { "done: {done}" }
+  }
+}

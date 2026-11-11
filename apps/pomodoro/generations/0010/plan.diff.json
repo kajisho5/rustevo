@@ -1,0 +1,42 @@
+{
+  "actions": {
+    "added": [
+      "skip"
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "derives": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "invariants": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "nodes": {
+    "added": [
+      "#root~if2~if1",
+      "#skip"
+    ],
+    "changed": [],
+    "removed": []
+  },
+  "state": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "styles": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  },
+  "timers": {
+    "added": [],
+    "changed": [],
+    "removed": []
+  }
+}

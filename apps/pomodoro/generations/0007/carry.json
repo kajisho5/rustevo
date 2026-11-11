@@ -1,0 +1,44 @@
+[
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "basic",
+    "nodes": {},
+    "result": "same",
+    "steps": 4
+  },
+  {
+    "at": 3,
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "complete",
+    "nodes": {},
+    "reason": "新しいビルドが出す依頼の結果が記録にない",
+    "result": "inapplicable",
+    "steps": 4,
+    "subject": "effect:store.put:done"
+  },
+  {
+    "at": 4,
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "rest",
+    "nodes": {},
+    "reason": "新しいビルドが出す依頼の結果が記録にない",
+    "result": "inapplicable",
+    "steps": 5,
+    "subject": "effect:store.put:done"
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "restart",
+    "nodes": {},
+    "result": "same",
+    "steps": 6
+  }
+]

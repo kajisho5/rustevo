@@ -1,0 +1,27 @@
+app Pomodoro: Main
+
+state phase: idle | focus = idle
+state remaining: int = 1500
+state done: int = 0
+
+derive label = mmss(remaining)
+derive running = phase != idle
+
+invariant remaining >= 0
+invariant done >= 0
+
+every 1s when running do tick
+
+style big { size: 48 }
+
+view Main {
+  column #root {
+    text #timer style big { label }
+    if running {
+      button #stop { "Stop"; on tap do stop }
+    } else {
+      button #start { "Start"; on tap do start }
+    }
+    text #count { "done: {done}" }
+  }
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "basic",
+    "nodes": {
+      "start": 0
+    },
+    "result": "diff",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "complete",
+    "nodes": {
+      "start": 0
+    },
+    "result": "diff",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "restart",
+    "nodes": {
+      "start": 0
+    },
+    "result": "diff",
+    "steps": 6
+  }
+]

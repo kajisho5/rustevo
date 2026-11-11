@@ -1,0 +1,84 @@
+[
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "basic",
+    "nodes": {
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "named",
+    "nodes": {
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "reset",
+    "nodes": {
+      "entry[1]": 2,
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 5
+  },
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "restart",
+    "nodes": {
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 6
+  },
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "saved",
+    "nodes": {
+      "entry[1]": 2,
+      "entry[2]": 6,
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 8
+  },
+  {
+    "derives": {},
+    "fields": {
+      "log": 0
+    },
+    "inv": [],
+    "journal": "skip_rest",
+    "nodes": {
+      "entry[1]": 2,
+      "history": 0
+    },
+    "result": "diff",
+    "steps": 7
+  }
+]

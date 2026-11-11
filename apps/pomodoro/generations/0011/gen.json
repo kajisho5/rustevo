@@ -1,0 +1,17 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362428,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "named"
+  ],
+  "hash": "6dcfdc508dd0dc1ef922630ed7a06e47782a15f93127cc71345071111a3a00e0",
+  "intent": "取り組むことの名前を入力できるようにして、画面に出す",
+  "logic": "b2235916c9c1bdff24c37c3c78551e9d4ddcb45704f6633f5a850f9385565b34",
+  "n": 11,
+  "parent": "e8a3c335ff9e27821b74eef22b3f9616c6804d47d3bc0dec73448888917b91a3",
+  "parent_n": 10,
+  "plan": "694e4fe452ba1b7ab87160a4490610cd26e19e14702d58c8b26c0862698230ef",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "basic",
+    "nodes": {},
+    "result": "same",
+    "steps": 4
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "reset",
+    "nodes": {
+      "skip": 2
+    },
+    "result": "diff",
+    "steps": 5
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "restart",
+    "nodes": {},
+    "result": "same",
+    "steps": 6
+  },
+  {
+    "derives": {},
+    "fields": {},
+    "inv": [],
+    "journal": "saved",
+    "nodes": {
+      "skip": 2
+    },
+    "result": "diff",
+    "steps": 8
+  }
+]

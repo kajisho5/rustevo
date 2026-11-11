@@ -1,0 +1,15 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362353,
+  "by": "Claude Fable 5.2",
+  "fresh": [],
+  "hash": "f9c5ee6639aa5f843ceeda7b84109bbbfe5ba7851cb928fe75b1e6e8bedfdf1e",
+  "intent": "ロジックの整理。開始・停止・完了で同じ処理を1つの関数にまとめる。動きは変えない",
+  "logic": "82e976065636b7b3a3ffcd7cb4e5825e144e058b981c4dc0213d9e7f7ee2baf1",
+  "n": 2,
+  "parent": "94a432e84515e4e0837f00688695909de24f42f1b6805cc1b284a97d2ad15089",
+  "parent_n": 1,
+  "plan": "837d1010594000a5e18887883c1011af323d4f887dc1aa5b27916df006da524f",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

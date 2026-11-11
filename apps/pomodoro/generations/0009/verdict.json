@@ -1,0 +1,30 @@
+{
+  "declared_unchanged": {},
+  "diff": [
+    "basic",
+    "reset",
+    "restart",
+    "saved"
+  ],
+  "inv": [
+    {
+      "inv": [
+        {
+          "broken": [
+            "remaining >= 0"
+          ],
+          "step": 5
+        }
+      ],
+      "journal": "skip"
+    }
+  ],
+  "other": [],
+  "retired": [],
+  "same": [],
+  "status": "rejected",
+  "undeclared": {},
+  "why": [
+    "不変条件が破れた"
+  ]
+}

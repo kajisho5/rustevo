@@ -1,0 +1,19 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362352,
+  "by": "Claude Fable 5.2",
+  "fresh": [
+    "basic",
+    "complete",
+    "restart"
+  ],
+  "hash": "94a432e84515e4e0837f00688695909de24f42f1b6805cc1b284a97d2ad15089",
+  "intent": "最初の版。25分の集中タイマー（開始・停止・1秒ごとの減算・完了回数）",
+  "logic": "d15ed191a9176f877feb4aeb7fb1ee065132124dd70ad3bf14237d74fd44b626",
+  "n": 1,
+  "parent": null,
+  "parent_n": null,
+  "plan": "837d1010594000a5e18887883c1011af323d4f887dc1aa5b27916df006da524f",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

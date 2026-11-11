@@ -1,0 +1,15 @@
+{
+  "app": "Pomodoro",
+  "at": 1794362353,
+  "by": "Claude Fable 5.2",
+  "fresh": [],
+  "hash": "a9bb08d356df9d0a50c81fdf997a641fb1b1b2419e87c0bcb64a28681b1f9386",
+  "intent": "残り時間の表示に「残り」をつける",
+  "logic": "82e976065636b7b3a3ffcd7cb4e5825e144e058b981c4dc0213d9e7f7ee2baf1",
+  "n": 3,
+  "parent": "f9c5ee6639aa5f843ceeda7b84109bbbfe5ba7851cb928fe75b1e6e8bedfdf1e",
+  "parent_n": 2,
+  "plan": "93b2225b0dcb9acdb0e353a8ff8a3dc9546dcc245c7633f99ebf96f4cbe5c409",
+  "runtime": "0.1.0",
+  "status": "sealed"
+}

@@ -1,0 +1,13 @@
+[package]
+name = "evo-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "evo"
+path = "src/main.rs"
+
+[dependencies]
+evo-core = { path = "../evo-core" }
+serde_json.workspace = true
