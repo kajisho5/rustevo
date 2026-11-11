@@ -213,6 +213,9 @@ fn run(args: &[String]) -> R<()> {
 }
 
 fn main() {
+    if let Some(code) = gen::rustc_shim() {
+        std::process::exit(code);
+    }
     let args: Vec<String> = std::env::args().skip(1).collect();
     if let Err(e) = run(&args) {
         eprintln!("error: {e}");

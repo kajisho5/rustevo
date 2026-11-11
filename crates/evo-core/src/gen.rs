@@ -43,6 +43,59 @@ fn json_file(p: &Path) -> R<Value> {
 /// first generations were built under `/root/.cargo`, so that is the name.
 pub const CARGO_HOME_AS: &str = "/root/.cargo";
 
+/// The host every build tells cargo it runs on. Cargo mixes the `host:` line
+/// of `rustc -vV` into the internal names it gives each crate, and those
+/// names change the order of things in the wasm. So the same source built on
+/// an ARM machine gave other bytes than on x86, though nothing else differed.
+/// The first generations were built on x86, so that is the name.
+pub const HOST_AS: &str = "x86_64-unknown-linux-gnu";
+
+/// Set when cargo runs `evo` in place of rustc; holds the real rustc.
+pub const RUSTC_SHIM: &str = "EVO_RUSTC_SHIM";
+
+/// When cargo runs evo as its rustc: answer `-vV` with the host line fixed,
+/// hand everything else to the real rustc. Returns the exit code, or `None`
+/// when evo was not started this way.
+pub fn rustc_shim() -> Option<i32> {
+    let real = std::env::var_os(RUSTC_SHIM)?;
+    let args: Vec<std::ffi::OsString> = std::env::args_os().skip(1).collect();
+    if args.len() == 1 && args[0] == "-vV" {
+        let out = match Command::new(&real).arg("-vV").output() {
+            Ok(o) if o.status.success() => o,
+            Ok(o) => return Some(o.status.code().unwrap_or(1)),
+            Err(e) => {
+                eprintln!("rustc を実行できない: {e}");
+                return Some(1);
+            }
+        };
+        for l in String::from_utf8_lossy(&out.stdout).lines() {
+            println!("{}", if l.starts_with("host: ") { format!("host: {HOST_AS}") } else { l.to_string() });
+        }
+        return Some(0);
+    }
+    match Command::new(&real).args(&args).status() {
+        Ok(s) => Some(s.code().unwrap_or(1)),
+        Err(e) => {
+            eprintln!("rustc を実行できない: {e}");
+            Some(1)
+        }
+    }
+}
+
+/// The rustc the toolchain file next to `dir` picks.
+fn real_rustc(dir: &Path) -> R<PathBuf> {
+    let out = Command::new("rustc").current_dir(dir).args(["--print", "sysroot"]).output().map_err(|e| format!("rustc を実行できない: {e}"))?;
+    if !out.status.success() {
+        return Err(format!("rustc の場所が分からない: {}", String::from_utf8_lossy(&out.stderr)));
+    }
+    let sysroot = PathBuf::from(String::from_utf8_lossy(&out.stdout).trim());
+    let rustc = sysroot.join("bin").join(if cfg!(windows) { "rustc.exe" } else { "rustc" });
+    if !rustc.exists() {
+        return Err(format!("{} がない", rustc.display()));
+    }
+    Ok(rustc)
+}
+
 fn cargo_home() -> PathBuf {
     std::env::var_os("CARGO_HOME").map(PathBuf::from).or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".cargo"))).unwrap_or_else(|| PathBuf::from(CARGO_HOME_AS))
 }
@@ -55,6 +108,7 @@ fn cargo_wasm(manifest: &Path, target: &Path) -> R<Vec<u8>> {
         .ok_or(format!("{} に name がない", manifest.display()))?;
     let manifest = io(std::path::absolute(manifest), manifest)?;
     let target = io(std::path::absolute(target), target)?;
+    let shim = std::env::current_exe().map_err(|e| format!("evo の場所が分からない: {e}"))?;
     let out = Command::new("cargo")
         // so rustup finds the toolchain file next to the logic, wherever evo runs from
         .current_dir(manifest.parent().unwrap())
@@ -65,6 +119,10 @@ fn cargo_wasm(manifest: &Path, target: &Path) -> R<Vec<u8>> {
         // RUSTFLAGS from outside would change the bytes; replace them
         .env_remove("RUSTFLAGS")
         .env("CARGO_ENCODED_RUSTFLAGS", format!("--remap-path-prefix={}={CARGO_HOME_AS}", cargo_home().display()))
+        // cargo runs evo as rustc, so it sees the same host on every machine
+        .env("RUSTC", &shim)
+        .env(RUSTC_SHIM, real_rustc(manifest.parent().unwrap())?)
+        .env_remove("RUSTC_WRAPPER")
         .output()
         .map_err(|e| format!("cargo を実行できない: {e}"))?;
     if !out.status.success() {
