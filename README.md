@@ -111,6 +111,8 @@ evo state apps/pomodoro s1
 evo carry  apps/pomodoro                # dry run of the verdict
 evo seal   apps/pomodoro --by "agent"   # judge, write the generation
 evo verify apps/pomodoro                # check the whole ledger
+evo verify apps/pomodoro --rebuild      # rebuild each generation's logic from its source and compare
+evo site   apps/pomodoro --out _site    # write the public ledger pages (verifies first)
 ```
 
 Driver operations: `tree` `state` `journal` (read) and `tap` `type` `clock` `respond` (write, always recorded).
@@ -124,7 +126,7 @@ rustevo is about one question Exact's documentation does not address today: acro
 ## What it does not do yet
 
 - No rendering and no screenshots. The UI is a logical tree.
-- `evo verify` proves the stored plan and logic behave as recorded. It does not yet rebuild the logic from source to prove the `.wasm` came from it.
+- `evo verify --rebuild` rebuilds each generation's logic from the source stored with it and checks the bytes match the stored `.wasm`. The rebuild uses the repository's *current* toolchain file, `Cargo.lock`, shared crates and `logic/Cargo.toml`; change those and older generations stop matching (and are reported as mismatches).
 - The ledger is a hash chain, not a signed log. It catches edits; someone who rewrites every later generation consistently is only caught if an earlier hash was published elsewhere (git history does this).
 - The carry compares nodes by id. A reordering of siblings is not reported.
 - Types in expressions are checked when they run, not when they compile.

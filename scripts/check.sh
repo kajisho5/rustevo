@@ -62,4 +62,41 @@ cp "$T/f/generations/0012/plan.json" "$T/f/generations/0012/logic.wasm" "$T/f/bu
 grep -q '"result"' "$T/f/generations/0012/journals/saved.jsonl" || fail "no recorded result in the journal"
 "$E" replay "$T/f" "$T/f/generations/0012/journals/saved.jsonl"
 
+say "the logic rebuilt from each generation's stored source is the stored wasm"
+if ! "$E" verify apps/pomodoro --rebuild > "$T/r.out" 2>&1; then
+  cat "$T/r.out"
+  K=apps/pomodoro/build/rebuild/0001.wasm
+  if [ -f "$K" ]; then
+    echo "-- generation 0001: sizes stored / rebuilt: $(wc -c < apps/pomodoro/generations/0001/logic.wasm) / $(wc -c < "$K")"
+    echo "-- paths inside (< stored, > rebuilt):"
+    diff <(strings -n 6 apps/pomodoro/generations/0001/logic.wasm | grep -E '\.rs' | sort -u) <(strings -n 6 "$K" | grep -E '\.rs' | sort -u) || true
+  fi
+  fail "a rebuild from stored source did not match"
+fi
+tail -1 "$T/r.out"
+
+say "a rebuild under different build settings is caught"
+mkdir "$T/g"
+cp -r Cargo.toml Cargo.lock rust-toolchain.toml crates apps "$T/g/"
+rm -rf "$T/g/apps/pomodoro/build" "$T/g/crates/target"
+sed -i 's/^opt-level = "s"/opt-level = "z"/' "$T/g/Cargo.toml"
+grep -q '^opt-level = "z"' "$T/g/Cargo.toml" || fail "the test could not change the build settings"
+"$E" verify "$T/g/apps/pomodoro" --rebuild >/dev/null 2>"$T/g.err" && fail "a rebuild with other settings passed"
+grep -q "0001.*logic.wasm と違う" "$T/g.err" || fail "the mismatching generation was not named"
+echo "caught: $(grep -m1 '^NG' "$T/g.err")"
+
+say "the ledger pages are written, in English and Japanese"
+"$E" site apps/pomodoro --out "$T/site" --repo https://example.invalid/repo
+N=$(wc -l < apps/pomodoro/ledger.jsonl)
+for f in index.html ja/index.html "g/$(printf %04d "$N").html" "ja/g/$(printf %04d "$N").html"; do
+  [ -s "$T/site/$f" ] || fail "missing page $f"
+done
+[ "$(find "$T/site" -name '*.html' | wc -l)" = "$((2 * N + 2))" ] || fail "wrong number of pages"
+grep -q 'lang="ja"' "$T/site/ja/index.html" || fail "the Japanese page is not marked as Japanese"
+
+say "no pages are written for a ledger that does not verify"
+"$E" site "$T/b" --out "$T/site-b" >/dev/null 2>"$T/sb.err" && fail "pages were written for a bad ledger"
+[ ! -e "$T/site-b" ] || fail "files were written for a bad ledger"
+echo "refused: $(head -1 "$T/sb.err" | cut -c1-120)"
+
 say "all checks passed"

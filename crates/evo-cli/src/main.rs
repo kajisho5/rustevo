@@ -30,9 +30,13 @@ const HELP: &str = "evo — rustevo の道具
     evo diff <app>                   今のビルドと親の世代の plan の差
     evo carry <app>                  判定の下見（何も書かない）
     evo seal <app> [--by 名前]       判定して世代を書く（合格でも不合格でも台帳に残る）
-    evo verify <app>                 台帳を最初から検証する
+    evo verify <app> [--rebuild]     台帳を最初から検証する
+      --rebuild をつけると、各世代の保存されたソースからロジックを作り直し、
+      保存された logic.wasm と 1 バイトも違わないかも確かめる（時間がかかる）
     evo ledger <app>                 台帳を表示
     evo replay <app> <file.jsonl>    今のビルドで記録を厳密に再演する
+    evo site <app> --out <dir> [--repo URL] [--commit ID]
+                                     公開台帳のページを書き出す（先に検証し、失敗したら何も書かない）
 ";
 
 fn session_path(app: &Path, name: &str) -> PathBuf {
@@ -78,7 +82,7 @@ fn run(args: &[String]) -> R<()> {
                     skip = false;
                     return false;
                 }
-                if *a == "--by" {
+                if matches!(a.as_str(), "--by" | "--out" | "--repo" | "--commit") {
                     skip = true;
                 }
                 !a.starts_with("--")
@@ -133,6 +137,23 @@ fn run(args: &[String]) -> R<()> {
                 return Err(format!("検証に失敗: {} 件", bad.len()));
             }
             println!("OK {} 世代すべて検証できた", report.len());
+            if args.iter().any(|a| a == "--rebuild") {
+                println!("\nソースからロジックを作り直して比べる");
+                let (report, bad) = gen::rebuild(&app)?;
+                report.iter().for_each(|l| println!("{l}"));
+                if !bad.is_empty() {
+                    bad.iter().for_each(|l| eprintln!("NG {l}"));
+                    return Err(format!("作り直しの確認に失敗: {} 件", bad.len()));
+                }
+                println!("OK {} 世代すべて、ソースから作り直したロジックが保存分と一致した", report.len());
+            }
+        }
+        "site" => {
+            let flag = |name: &str| args.iter().position(|a| a == name).and_then(|i| args.get(i + 1)).cloned();
+            let out = PathBuf::from(flag("--out").ok_or("--out <書き出し先のフォルダ> を指定する")?);
+            let o = evo_core::site::Opts { app_path: app.to_string_lossy().trim_end_matches('/').to_string(), repo: flag("--repo").map(|r| r.trim_end_matches('/').to_string()), commit: flag("--commit") };
+            let n = evo_core::site::site(&app, &out, &o)?;
+            println!("OK {n} ファイルを {} に書いた", out.display());
         }
         "ledger" => {
             for l in gen::ledger(&app)? {
@@ -201,6 +222,9 @@ fn run(args: &[String]) -> R<()> {
 }
 
 fn main() {
+    if let Some(code) = gen::rustc_shim() {
+        std::process::exit(code);
+    }
     let args: Vec<String> = std::env::args().skip(1).collect();
     if let Err(e) = run(&args) {
         eprintln!("error: {e}");
