@@ -409,7 +409,15 @@ pub fn rebuild(app: &Path) -> R<(Vec<String>, Vec<String>)> {
             let wasm = cargo_wasm(&logic.join("Cargo.toml"), &target)?;
             let got = sha(&wasm);
             if gen["logic"] != got.as_str() {
-                return Err(format!("保存されたソースから作り直したロジックが、保存された logic.wasm と違う（作り直し {} / 保存 {}）", &got[..12], gen["logic"].as_str().unwrap_or("?").get(..12).unwrap_or("?")));
+                // keep the rebuilt bytes so the difference can be looked at
+                let kept = scratch.join(format!("{n:04}.wasm"));
+                io(std::fs::write(&kept, &wasm), &kept)?;
+                return Err(format!(
+                    "保存されたソースから作り直したロジックが、保存された logic.wasm と違う（作り直し {} / 保存 {}。作り直した方は {}）",
+                    &got[..12],
+                    gen["logic"].as_str().unwrap_or("?").get(..12).unwrap_or("?"),
+                    kept.display()
+                ));
             }
             Ok(format!("{n:04} 一致 {}", &got[..12]))
         })();

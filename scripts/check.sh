@@ -63,7 +63,17 @@ grep -q '"result"' "$T/f/generations/0012/journals/saved.jsonl" || fail "no reco
 "$E" replay "$T/f" "$T/f/generations/0012/journals/saved.jsonl"
 
 say "the logic rebuilt from each generation's stored source is the stored wasm"
-"$E" verify apps/pomodoro --rebuild | tail -1
+if ! "$E" verify apps/pomodoro --rebuild > "$T/r.out" 2>&1; then
+  cat "$T/r.out"
+  K=apps/pomodoro/build/rebuild/0001.wasm
+  if [ -f "$K" ]; then
+    echo "-- generation 0001: sizes stored / rebuilt: $(wc -c < apps/pomodoro/generations/0001/logic.wasm) / $(wc -c < "$K")"
+    echo "-- paths inside (< stored, > rebuilt):"
+    diff <(strings -n 6 apps/pomodoro/generations/0001/logic.wasm | grep -E '\.rs' | sort -u) <(strings -n 6 "$K" | grep -E '\.rs' | sort -u) || true
+  fi
+  fail "a rebuild from stored source did not match"
+fi
+tail -1 "$T/r.out"
 
 say "a rebuild under different build settings is caught"
 mkdir "$T/g"
