@@ -37,6 +37,43 @@ fn json_file(p: &Path) -> R<Value> {
     serde_json::from_str(&read(p)?).map_err(|e| format!("{}: {e}", p.display()))
 }
 
+/// The path every build writes in place of the cargo home. The registry path
+/// ends up inside the wasm (in panic messages), so without this the same
+/// source gives different bytes on machines whose cargo home differs. The
+/// first generations were built under `/root/.cargo`, so that is the name.
+pub const CARGO_HOME_AS: &str = "/root/.cargo";
+
+fn cargo_home() -> PathBuf {
+    std::env::var_os("CARGO_HOME").map(PathBuf::from).or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".cargo"))).unwrap_or_else(|| PathBuf::from(CARGO_HOME_AS))
+}
+
+/// Build one logic crate to WebAssembly and return the bytes.
+fn cargo_wasm(manifest: &Path, target: &Path) -> R<Vec<u8>> {
+    let name = read(manifest)?
+        .lines()
+        .find_map(|l| l.trim().strip_prefix("name").map(|r| r.trim_start_matches([' ', '=']).trim_matches('"').to_string()))
+        .ok_or(format!("{} に name がない", manifest.display()))?;
+    let manifest = io(std::path::absolute(manifest), manifest)?;
+    let target = io(std::path::absolute(target), target)?;
+    let out = Command::new("cargo")
+        // so rustup finds the toolchain file next to the logic, wherever evo runs from
+        .current_dir(manifest.parent().unwrap())
+        .args(["build", "--release", "--quiet", "--target", "wasm32-unknown-unknown", "--manifest-path"])
+        .arg(&manifest)
+        .arg("--target-dir")
+        .arg(&target)
+        // RUSTFLAGS from outside would change the bytes; replace them
+        .env_remove("RUSTFLAGS")
+        .env("CARGO_ENCODED_RUSTFLAGS", format!("--remap-path-prefix={}={CARGO_HOME_AS}", cargo_home().display()))
+        .output()
+        .map_err(|e| format!("cargo を実行できない: {e}"))?;
+    if !out.status.success() {
+        return Err(format!("ロジックのビルドに失敗:\n{}", String::from_utf8_lossy(&out.stderr)));
+    }
+    let wasm_path = target.join("wasm32-unknown-unknown/release").join(format!("{}.wasm", name.replace('-', "_")));
+    io(std::fs::read(&wasm_path), &wasm_path)
+}
+
 /// Compile the .evo, generate the Rust types, build the logic to WebAssembly.
 /// Leaves `build/plan.json` and `build/logic.wasm`.
 pub fn build(app: &Path) -> R<(Plan, Vec<u8>)> {
@@ -46,26 +83,8 @@ pub fn build(app: &Path) -> R<(Plan, Vec<u8>)> {
     if std::fs::read_to_string(&st).ok().as_deref() != Some(types.as_str()) {
         write(&st, &types)?;
     }
-    let manifest = app.join("logic/Cargo.toml");
-    let name = read(&manifest)?
-        .lines()
-        .find_map(|l| l.trim().strip_prefix("name").map(|r| r.trim_start_matches([' ', '=']).trim_matches('"').to_string()))
-        .ok_or("logic/Cargo.toml に name がない")?;
-    let target = app.join("build/target");
-    let out = Command::new("cargo")
-        .args(["build", "--release", "--quiet", "--target", "wasm32-unknown-unknown", "--manifest-path"])
-        .arg(&manifest)
-        .arg("--target-dir")
-        .arg(&target)
-        .output()
-        .map_err(|e| format!("cargo を実行できない: {e}"))?;
-    if !out.status.success() {
-        return Err(format!("ロジックのビルドに失敗:\n{}", String::from_utf8_lossy(&out.stderr)));
-    }
-    let wasm_path = target.join("wasm32-unknown-unknown/release").join(format!("{}.wasm", name.replace('-', "_")));
-    let wasm = io(std::fs::read(&wasm_path), &wasm_path)?;
-    let logic = WasmLogic::new(&wasm)?;
-    let _ = logic;
+    let wasm = cargo_wasm(&app.join("logic/Cargo.toml"), &app.join("build/target"))?;
+    WasmLogic::new(&wasm)?;
     write(&app.join("build/plan.json"), &plan.to_text())?;
     io(std::fs::write(app.join("build/logic.wasm"), &wasm), &app.join("build/logic.wasm"))?;
     Ok((plan, wasm))
@@ -319,5 +338,86 @@ pub fn verify(app: &Path) -> R<(Vec<String>, Vec<String>)> {
         }
         bad.extend(errs.into_iter().map(|e| format!("世代 {n:04}: {e}")));
     }
+    Ok((report, bad))
+}
+
+fn copy_dir(src: &Path, dst: &Path) -> R<()> {
+    io(std::fs::create_dir_all(dst), dst)?;
+    for e in io(std::fs::read_dir(src), src)?.filter_map(|e| e.ok()) {
+        let p = e.path();
+        if p.is_dir() {
+            if p.file_name().is_some_and(|n| n != "target") {
+                copy_dir(&p, &dst.join(e.file_name()))?;
+            }
+        } else {
+            io(std::fs::copy(&p, dst.join(e.file_name())), &p)?;
+        }
+    }
+    Ok(())
+}
+
+/// Build every generation's logic again from the source stored in that
+/// generation, and compare the bytes with the stored `logic.wasm`.
+///
+/// The build runs in a scratch workspace under `build/rebuild` laid out like
+/// the real one, so paths that end up in the wasm are the same. It uses the
+/// repository's current toolchain file, `Cargo.lock`, shared crates and the
+/// app's `logic/Cargo.toml`; a generation built with different ones shows up
+/// as a mismatch. Returns one line per generation and the problems.
+pub fn rebuild(app: &Path) -> R<(Vec<String>, Vec<String>)> {
+    let app_abs = io(app.canonicalize(), app)?;
+    let ws = app_abs
+        .ancestors()
+        .skip(1)
+        .find(|d| std::fs::read_to_string(d.join("Cargo.toml")).is_ok_and(|t| t.lines().any(|l| l.trim() == "[workspace]")))
+        .ok_or("アプリの上に Cargo のワークスペースが見つからない")?
+        .to_path_buf();
+    let rel = app_abs.strip_prefix(&ws).unwrap().join("logic");
+    let rel_s = rel.to_string_lossy().replace('\\', "/");
+    let scratch = app_abs.join("build/rebuild");
+    let _ = std::fs::remove_dir_all(scratch.join("ws"));
+    let root = scratch.join("ws");
+    let manifest_text = read(&ws.join("Cargo.toml"))?;
+    if !manifest_text.lines().any(|l| l.trim_start().starts_with("members")) {
+        return Err("ワークスペースの Cargo.toml に members の行がない".into());
+    }
+    let manifest_text: String = manifest_text
+        .lines()
+        .map(|l| if l.trim_start().starts_with("members") { format!("members = [\"{rel_s}\"]") } else { l.to_string() })
+        .collect::<Vec<_>>()
+        .join("\n")
+        + "\n";
+    write(&root.join("Cargo.toml"), &manifest_text)?;
+    for f in ["Cargo.lock", "rust-toolchain.toml"] {
+        if ws.join(f).exists() {
+            io(std::fs::copy(ws.join(f), root.join(f)), &ws.join(f))?;
+        }
+    }
+    copy_dir(&ws.join("crates"), &root.join("crates"))?;
+    let logic = root.join(&rel);
+    io(std::fs::create_dir_all(&logic), &logic)?;
+    io(std::fs::copy(app_abs.join("logic/Cargo.toml"), logic.join("Cargo.toml")), &app_abs)?;
+    let target = scratch.join("target");
+
+    let (mut report, mut bad) = (vec![], vec![]);
+    for n in 1..=ledger(app)?.len() as u64 {
+        let dir = gen_dir(app, n);
+        let r = (|| -> R<String> {
+            let gen = json_file(&dir.join("gen.json"))?;
+            let _ = std::fs::remove_dir_all(logic.join("src"));
+            copy_dir(&dir.join("src/logic"), &logic.join("src"))?;
+            let wasm = cargo_wasm(&logic.join("Cargo.toml"), &target)?;
+            let got = sha(&wasm);
+            if gen["logic"] != got.as_str() {
+                return Err(format!("保存されたソースから作り直したロジックが、保存された logic.wasm と違う（作り直し {} / 保存 {}）", &got[..12], gen["logic"].as_str().unwrap_or("?").get(..12).unwrap_or("?")));
+            }
+            Ok(format!("{n:04} 一致 {}", &got[..12]))
+        })();
+        match r {
+            Ok(l) => report.push(l),
+            Err(e) => bad.push(format!("世代 {n:04}: {e}")),
+        }
+    }
+    let _ = std::fs::remove_dir_all(&root);
     Ok((report, bad))
 }

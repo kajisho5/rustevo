@@ -62,4 +62,17 @@ cp "$T/f/generations/0012/plan.json" "$T/f/generations/0012/logic.wasm" "$T/f/bu
 grep -q '"result"' "$T/f/generations/0012/journals/saved.jsonl" || fail "no recorded result in the journal"
 "$E" replay "$T/f" "$T/f/generations/0012/journals/saved.jsonl"
 
+say "the logic rebuilt from each generation's stored source is the stored wasm"
+"$E" verify apps/pomodoro --rebuild | tail -1
+
+say "a rebuild under different build settings is caught"
+mkdir "$T/g"
+cp -r Cargo.toml Cargo.lock rust-toolchain.toml crates apps "$T/g/"
+rm -rf "$T/g/apps/pomodoro/build" "$T/g/crates/target"
+sed -i 's/^opt-level = "s"/opt-level = "z"/' "$T/g/Cargo.toml"
+grep -q '^opt-level = "z"' "$T/g/Cargo.toml" || fail "the test could not change the build settings"
+"$E" verify "$T/g/apps/pomodoro" --rebuild >/dev/null 2>"$T/g.err" && fail "a rebuild with other settings passed"
+grep -q "0001" "$T/g.err" || fail "the mismatching generation was not named"
+echo "caught: $(grep -m1 '^NG' "$T/g.err")"
+
 say "all checks passed"
